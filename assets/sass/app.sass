@@ -1,0 +1,163 @@
+$color : #2785FF
+
+body
+	margin: 0
+	padding: 0
+	font-size: 100%
+	font-weight: normal
+	font-family: Roboto, sans-serif
+#app
+	display: flex
+	justify-content: center
+	align-items: center
+	min-width: 40em
+	height: 100vh
+	background: #EEEEEE
+
+#font_manager
+	display: flex
+	box-shadow: 0 0 8px rgba(#111, .2)
+	color: white
+.visualizer
+	display: flex
+	flex-direction: column
+	justify-content: space-around
+	align-items: center
+	min-width: 300px
+	max-width: 300px
+	background: $color
+	overflow: hidden
+	h2
+		align-self: flex-start
+		margin: 0
+		padding: 2em
+		font-size: 1em
+.visualizer-letters
+	flex: 1
+	display: flex
+	align-items: center
+	margin: 0 .6em
+	font-size: 6em
+	white-space: nowrap
+	text-overflow: ellipsis
+	text-align: center	
+.visualizer-inverse
+	label
+		display: flex
+		align-items: center
+		width: 4.6em
+		height: 2em
+		margin: 2em 0
+		padding: .15em
+		background: #EEEEEE
+		border-radius: 2em
+		cursor: pointer
+		transition: all .6s
+	input
+		display: none
+	.cursor
+		width: 1.8em
+		height: 1.8em
+		margin: 0 .15em
+		background: #AAAAAA
+		border-radius: 50%
+		transition: all .2s
+	input:checked + label
+		background: #AAAAAA
+	input:checked + label .cursor
+		transform: translateX(2.5em)
+		background: #EEEEEE
+.visualizer-changed-text input
+	width: 8em
+	height: 2em
+	margin: 2em 0
+	padding: .5em 1em
+	background: #EEEEEE
+	border: none
+	border-radius: 4px
+	box-shadow: 0 -1px 0px #333333 inset
+	text-align: center
+.manager
+	display: flex
+	flex-direction: column
+	justify-content: space-around
+	max-width: 16em
+	padding: 1em 2em
+	background: white
+
+	color: #111
+
+	select
+		width: 100%
+		border: none
+		border-bottom: 1px solid #EEE
+		padding: .25em 0
+		font-size: 1.25em
+		outline: none
+	option
+		padding: .2em 0 .2em 1em
+		font-weight: 400
+		&:first-letter
+			text-transform: uppercase
+
+	label
+		display: block
+		margin: 1.5em 0 0 0
+		color: lighten($color, 10%)
+.manager-colors
+	display: flex
+	flex-wrap: wrap
+	label
+		width: 2.25em
+		height: 2.25em
+		margin-right: .75em
+		margin-top: .5em
+		background: lighten($color, 40%)
+		border-radius: 50%
+		cursor: pointer
+		b
+			display: flex
+			justify-content: center
+			align-items: center
+			height: 100%
+			border-radius: 50%
+			color: lighten(silver, 25%)
+			font-weight: 400
+	input[type='radio']
+		opacity: 0
+.manager-colors .manager-colors-add
+	background: darken(silver, 5%)
+	border: 1px solid lighten(silver, 5%)
+.addColor
+	display: flex
+	align-items: center
+	margin: 1em 0
+	input
+		padding-bottom: .25em
+		border: none
+		border-bottom: 1px solid $color
+		font-size: 1.1em
+	button
+		padding: .5em .75em
+		background: $color
+		border: none
+		border-radius: 5px
+		color: white
+		font-weight: 400
+		font-size: 1.2em
+		cursor: pointer
+
+.manager-range
+	input
+		display: block
+		width: 100%
+		margin: 1em 0 .25em
+		padding: 0
+.manager-range-a
+	display: flex
+	justify-content: space-between
+	align-items: flex-start
+.range-small
+	font-size: 14px
+.range-big
+	font-size: 20px

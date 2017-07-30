@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html class="no-js" lang='fr'>
+	
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+		<title>Font Manager !</title>
+
+		<meta name='description' content=''>
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+		<link rel='stylesheet' href='assets/css/app.css'>
+		
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<section id="font_manager">
+				<div class="visualizer" :style="'background:' + backgroundSelected">
+					<h2 :style="'color:' + colorSelected">Font settings</h2>
+
+					<div class="visualizer-letters" :style="'font-size:' + range + 'px;color:' + colorSelected">{{ text }}</div>
+					<div class="visualizer-font">
+						<span class="visualizer-font-name" :style="'color:' + colorSelected">{{ fontSelected }}</span>
+						<span class="visualizer-font-weight" :style="'font-weight: ' + weightSelected + '; color:' + colorSelected">{{ weightSelected }}</span>
+					</div>
+
+					<div class="visualizer-changed-text">
+						<input id="visualizerChangedText" type="text" placeholder="Ab" maxlength="12" v-model="text" @blur="textChanged">
+					</div>
+
+					<div class="visualizer-inverse">
+						<input id="visualizerInverse" type="checkbox" @click="colorInversion">
+						<label for="visualizerInverse">
+							<div class="cursor"></div>
+						</label>
+					</div>
+				</div>
+				<form class="manager">
+					
+					<div>
+						<label>Police</label>
+						<select v-model="fontSelected">
+							<option v-for="font in fonts" :value='font.name'>{{ font.name }}</option>
+						</select>
+					</div>
+
+					<div>
+						<label>Style</label>
+						<select v-model="weightSelected">
+							<option v-for="weight in weights" :value='weight.name'>{{ weight.name }}</option>
+						</select>
+					</div>
+
+					<div>
+						<label>Couleur</label>
+						<div class="manager-colors">
+							<label v-for="color in colors" :style="'background:' + color.name" @click="changedColor(color.name)"><input type="radio"></label>
+							<label class="manager-colors-add"><b @click.self="showAddColor">+</b><input type="radio"></label>
+
+							<div class="addColor" v-if="stateAddColor">
+								<input id="addColor" type="text" placeholder="#FFFFFF" maxlength="7" v-model="colorAdded" v-focus="stateAddColor == true">
+								<button @click.prevent="addingColor">ok</button>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="manager-range">
+						<label>Taille</label>
+						<input type="range" id="managerRange" min="10" max="75" step="1" v-model="range">
+						<div class="manager-range-a">
+							<span class="range-small">A</span>
+							<span>{{ range }} px</span>
+							<span class="range-big">A</span>
+						</div>
+					</div>
+				</form>
+			</section>
+
+		</div>
+
+		<script src="https://unpkg.com/vue"></script>
+		<script src='assets/js/app.js'></script>
+	</body>
+</html>
